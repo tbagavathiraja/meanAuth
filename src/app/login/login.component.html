@@ -1,0 +1,26 @@
+
+<div class="jumbotron">
+  <h1 style="position:relative;margin-left: 180px;margin-bottom:60px">Login here  </h1>
+<div class="container">
+  <form (submit)="login()">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email" [(ngModel)]="currentUser.username">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input id="password" type="password" [(ngModel)]="currentUser.password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <br>
+
+    <input type="submit" class="btn btn-success" value="Success">
+
+    <div id="dynamicscreen">
+      <router-outlet></router-outlet>
+    </div>
+
+  </form>
+
+  <br>
+</div>
+</div>
