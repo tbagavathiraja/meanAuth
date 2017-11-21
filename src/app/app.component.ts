@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { LoginComponent} from './login/login.component';
+
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
+
 }

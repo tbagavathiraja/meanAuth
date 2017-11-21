@@ -2,13 +2,13 @@ var express=require("express")
 var db=require("./config/database")
 var cors = require('cors')
 var app=express();
-var bodyParsre=require('body-parser');
+var bodyParser=require('body-parser');
 var jwt=require("jsonwebtoken")
 
 
 var connection=db.connection;
-app.use(bodyParsre.urlencoded({extend:false}));
-app.use(require("./config/database" ))
+app.use(bodyParser.urlencoded({urlencoded:false}));
+
 app.use(cors())
 app.post("/connect",(req,res)=>{
   console.log("inside")
@@ -19,8 +19,7 @@ app.post("/connect",(req,res)=>{
     name:username,
     password:password
   }
-//  console.log(JSON.stringify(req.body))
-  //res.json("success");
+
       connection.query("select * from test", (err, result, fields) => {
         if (!err) {
           for (let iloop = 0; iloop < result.length; iloop++) {
@@ -29,18 +28,38 @@ app.post("/connect",(req,res)=>{
               let token = jwt.sign(user, "this-is-my-secret-key", {expiresIn: 1440});
               res.json({error:false, token: token});
             }
+
           }
+
         }
-        else
-        {
-          throw err;
+        else {
+          res.send(err)
         }
+
       })
   console.log("congrats from node herer it is")
 
- //res.json('success')
 
   })
+
+app.get("/users",(req,res)=>{
+
+  connection.query("select name from test", (err, result, fields) => {
+    if (!err) {
+      console.log("success")
+        res.status(200).json(result);
+    }
+    else
+    {
+
+    }
+  })
+
+
+})
+
+
+
 
 app.listen(3000,()=>{
   console.log("app is running at port 3000");

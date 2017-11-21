@@ -7,5 +7,4 @@ var con = mysql.createConnection({
   database:"test"
 });
 
-console.log("insode databse")
 exports.connection=con;

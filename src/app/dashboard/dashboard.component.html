@@ -1,14 +1,14 @@
-
-<div class="jumbotron">
+<br>
+<div class="jumbotron" *ngIf="logincomponent.isLogged">
   <h3 style="position:relative;margin-left: 180px;margin-bottom:60px">Successfully logged in!!!!!!!  </h3>
   <div class="container">
+    <a routerLink="/dashboard/userslist">usersList</a>
+
     <form (submit)="logout()">
-
         <input type="submit" class="btn btn-warning" value="logout">
-
-
     </form>
 
     <br>
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
   providers: [AuthenticateService]
 })
 export class LoginComponent implements OnInit {
@@ -14,6 +13,8 @@ export class LoginComponent implements OnInit {
     username: '',
     password: ''
   };
+
+isLogged: boolean = false;
 
   constructor(private authenticatService: AuthenticateService, private router: Router) {
 
@@ -28,9 +29,11 @@ export class LoginComponent implements OnInit {
 
   this.authenticatService.loginFn(this.currentUser).then((res) => {
     if (!res) {
-      console.log(res+'ERRORRRRRRRR');
+      console.log(res + 'ERRORRRRRRRR');
     } else {
-      this.router.navigate(['dashboard']);
+     // this.router.navigate(['dashboard'], false );
+      this.isLogged = true;
+
     }
 
 

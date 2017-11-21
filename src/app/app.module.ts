@@ -8,18 +8,23 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {ApplicationRoutes} from './routing/routing';
 import {AuthenticateService} from './authenticate.service';
-import {Http, HttpModule} from '@angular/http';
+import {HttpModule} from '@angular/http';
+import { HomeComponent } from './home/home.component';
+import { UserlistComponent } from './dashboard/userlist/userlist.component';
+import {UserdataService} from './userdata.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    HomeComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(ApplicationRoutes), HttpModule
   ],
-  providers: [AuthenticateService],
+  providers: [AuthenticateService, UserdataService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
