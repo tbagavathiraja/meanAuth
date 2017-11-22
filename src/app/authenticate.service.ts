@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Headers} from '@angular/http';
+import {UserLogin } from './login/login.service';
 
 @Injectable()
 export class AuthenticateService {
 
-  isLoggedin: boolean;
-
-  constructor(private http: Http) {
+  constructor(private http: Http,private status: UserLogin) {
 
   }
 
   loginFn(userInfo) {
-    this.isLoggedin = false;
     const headers = new Headers();
     const userinfo = 'name=' + userInfo.username + '&password=' + userInfo.password;
 
@@ -20,7 +18,7 @@ export class AuthenticateService {
 
     headers.append('Access-Control-Allow-Origin', 'http://localhost:3000/connnect');
     headers.append('Access-Control-Allow-Credentials', 'true');
-
+    headers.append("Authorization",'ASSSSSSSSSSSSSSSSSSss');
 
     return new Promise((resolve) => {
 
@@ -30,8 +28,8 @@ export class AuthenticateService {
 
           console.log('token is : ' + data.json().token)
          window.localStorage.setItem('auth_key', data.json().token);
-          this.isLoggedin = true;
-          resolve(this.isLoggedin);
+          this.status.isLoggedIn = true;
+          resolve(this.status.isLoggedIn);
 
       });
     });

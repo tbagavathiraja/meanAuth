@@ -12,6 +12,8 @@ import {HttpModule} from '@angular/http';
 import { HomeComponent } from './home/home.component';
 import { UserlistComponent } from './dashboard/userlist/userlist.component';
 import {UserdataService} from './userdata.service';
+import {OnlyLoggedInUsers} from './routing/route.guard';
+import {UserLogin} from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import {UserdataService} from './userdata.service';
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(ApplicationRoutes), HttpModule
   ],
-  providers: [AuthenticateService, UserdataService ],
+  providers: [AuthenticateService, UserdataService , OnlyLoggedInUsers , UserLogin ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

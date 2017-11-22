@@ -7,7 +7,7 @@ var jwt=require("jsonwebtoken")
 
 
 var connection=db.connection;
-app.use(bodyParser.urlencoded({urlencoded:false}));
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(cors())
 app.post("/connect",(req,res)=>{

@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  providers: [AuthenticateService]
+  providers: [AuthenticateService ]
 })
 export class LoginComponent implements OnInit {
 
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-isLogged: boolean = false;
+
 
   constructor(private authenticatService: AuthenticateService, private router: Router) {
 
@@ -28,11 +28,12 @@ isLogged: boolean = false;
   console.log('inside log in');
 
   this.authenticatService.loginFn(this.currentUser).then((res) => {
+
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAA")
     if (!res) {
       console.log(res + 'ERRORRRRRRRR');
     } else {
-     // this.router.navigate(['dashboard'], false );
-      this.isLogged = true;
+      this.router.navigate(['dashboard'] );
 
     }
 
